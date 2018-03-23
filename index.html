@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>断点文件上传</title>
+	<script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="index.js"></script>
+	<style type="text/css">
+      body {
+        font-family: Arial;
+      }
+      form {
+        margin: 50px auto;
+        width: 600px;
+      }
+ 
+      input[type="button"] {
+        cursor: pointer;
+      }
+      table {
+        /* display: none; */
+        margin-top: 15px;
+        border: 1px solid #ddd;
+        border-collapse: collapse;
+      }
+ 
+      table th {
+        color: #666;
+      }
+      table td,
+      table th {
+        padding: 5px;
+        border: 1px solid #ddd;
+        text-align: center;
+        font-size: 14px;
+      }
+    </style>
+</head>
+<body>
+	<!-- 上传的表单 -->
+    <form method="post" id="myForm" enctype="multipart/form-data">
+      <input type="file" id="myFile" multiple>
+      <!-- 上传的文件列表 -->
+      <table id="upload-list">
+        <thead>
+          <tr>
+            <th width="35%">文件名</th>
+            <th width="15%">文件类型</th>
+            <th width="15%">文件大小</th>
+            <th width="20%">上传进度</th>
+            <th width="15%">
+              <input type="button" id="upload-all-btn" value="全部上传">
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </form>
+    <!-- 上传文件列表中每个文件的信息模版 -->
+    <script type="text/template" id="file-upload-tpl">
+      <tr>
+        <td>{{fileName}}</td>
+         <td>{{fileType}}</td>
+         <td>{{fileSize}}</td>
+         <td class="upload-progress">{{progress}}</td>
+         <td>
+           <input type="button" class="upload-item-btn" data-name="{{fileName}}" data-size="{{totalSize}}" data-state="default" value="{{uploadVal}}">
+         </td>
+       </tr>
+    </script>
+</body>
+</html>
